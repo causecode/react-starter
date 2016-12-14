@@ -1,0 +1,7 @@
+/src
+/__mocks__
+/__tests__
+/.idea
+/coverage
+/node_modules
+/typings

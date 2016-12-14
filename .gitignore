@@ -1,0 +1,11 @@
+/node_modules
+/typings
+/coverage
+/public
+/build
+/.idea
+*.iml
+/dist
+/.vscode
+/.babelrc
+localConfig.json
