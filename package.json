@@ -27,20 +27,15 @@
   },
   "jest": {
     "verbose": true,
-    "transform": "<rootDir>/preprocessor.js",
-    "transformIgnorePatterns": [
-      "<rootDir>/node_modules/",
-      "<rootDir>/typings/"
-    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
     ],
-    "unmockedModulePathPatterns": [
-      "react"
-    ],
-    "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$"
   },
   "keywords": [],
   "author": "",
@@ -48,27 +43,34 @@
   "homepage": "https://bitbucket.org/causecode/PROJECT_REPOSITORY#readme",
   "dependencies": {
     "axios": "^0.12.0",
-    "es6-promise": "^3.2.1",
+    "es6-promise": "3.2.1",
     "react": "15.1.0",
     "react-dom": "15.2.0",
-    "react-hero": "git+ssh://git@bitbucket.org/causecode/react-hero.git#dist",
-    "react-router": "^2.4.1",
-    "react-router-redux": "^4.0.5",
-    "redux": "^3.6.0",
-    "typescript": "^2.1.4"
+    "react-router": "2.4.1",
+    "react-router-redux": "4.0.5",
+    "react-hot-loader": "1.3.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "html-webpack-plugin": "2.19.0",
+    "redux": "3.6.0",
+    "ts-loader": "1.2.2",
+    "tslint": "^3.11.0",
+    "tslint-loader": "^2.1.4",
+    "typescript": "2.1.1",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1"
   },
   "devDependencies": {
-    "babel-jest": "^17.0.2",
-    "babel-polyfill": "^6.16.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-3": "^6.17.0",
-    "enzyme": "^2.6.0",
-    "jest": "^17.0.3",
-    "jest-cli": "^17.0.3",
-    "react-addons-test-utils": "^15.2.0",
-    "react-test-renderer": "^15.4.1",
-    "unroll": "git+ssh://git@bitbucket.org/causecode/unroll.git"
+    "babel-jest": "17.0.2",
+    "babel-polyfill": "6.16.0",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-3": "6.17.0",
+    "enzyme": "2.6.0",
+    "jest": "17.0.3",
+    "jest-cli": "17.0.3",
+    "react-addons-test-utils": "15.2.0",
+    "react-test-renderer": "15.4.1",
+    "unroll": "1.2.0"
   }
 }
 
