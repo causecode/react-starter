@@ -1,0 +1,12 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "tsimporter.spaceBetweenBraces": false,
+    "tsimporter.filesToExclude": ["./dist", "./public","./__tests__", "./__mocks__"],
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/dist": true,
+        "**/public": true
+    },
+    "editor.rulers": [120]
+}
