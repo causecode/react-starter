@@ -1,0 +1,6 @@
+{
+    "reactHero": {
+        "serverUrl": "http://DEVELOPMENT_SERVER_URL/",
+        "APIUrl": "http://DEVELOPMENT_SERVER_URL/YOUR/API/URL"
+    }
+}
