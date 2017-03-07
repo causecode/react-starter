@@ -14,11 +14,15 @@ if (isProduction) {
     // Adding Production environment specific features.
 
     plugins.push(
-        new webpack.optimize.UglifyJsPlugin({  // Used for minification of .js and .css files.
-            minimize: true,
+        new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
-            }
+            },
+            sourceMap: true
+        }),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
         }),
         new webpack.DefinePlugin({
             'process.env': {
@@ -44,31 +48,59 @@ plugins.push(
         filename: 'index.html',
         template: 'index.ejs'
     }),
-    new ExtractTextPlugin('style.css', {allChunks: true})
+    new ExtractTextPlugin({
+        filename: 'style.css',
+        allChunks: true
+    })
 );
 
 var config = {
     entry: entryPoints,
     output: {
-        path:'./dist',
-        filename: isProduction ? 'bundle.[hash].min.js' : 'bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: isProduction ? 'bundle.[hash].min.js' : 'bundle.js',
+        publicPath: '/'
     },
     devtool: 'source-map',
+    devServer: {
+		historyApiFallback: true
+	},
     resolve: {
-        root: [
-            path.resolve('./src')
+        modules: [
+            path.resolve(__dirname, './src'),
+            'node_modules'
         ],
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.css', '.json']
+        extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js', '.css', '.json']
     },
     module: {
-        preLoaders: [
-            {test: /\.tsx?$/, loader: 'tslint', exclude: /node_modules/}
-        ],
-        loaders: [
-            {test: /\.tsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'ts-loader']},
-            {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
-            {test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000'},
-            {test: /\.json$/, loader: 'json-loader' }
+        rules: [
+            {
+                test: /\.tsx?$/,
+                enforce: "pre",
+                loader: 'tslint-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    'react-hot-loader',
+                    'ts-loader'
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader'
+                })
+            },
+            {
+                test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
+                use: [
+                    'url-loader?limit=100000'
+                ]
+            }
         ]
     },
     plugins: plugins
