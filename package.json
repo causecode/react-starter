@@ -1,6 +1,6 @@
 {
-  "name": "project-name",
-  "version": "0.0.2",
+  "name": "react-starter",
+  "version": "0.0.3",
   "description": "",
   "main": "public/index.js",
   "typings": "public/index.d.ts",
@@ -15,15 +15,7 @@
     "postInstall": "npm run compile",
     "test": "NODE_ENV=test jest --no-cache",
     "lint-ts": "tslint 'src/*.tsx' 'src/**/*.tsx' 'src/*.ts' 'src/**/*.ts'",
-    "start:dev": "npm run clean && webpack-dev-server --watch --hot"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org:causecode/PROJECT_REPOSITORY.git"
-  },
-  "reactHero": {
-    "serverUrl": "http://PRODUCTION_SERVER_URL/",
-    "APIUrl": "http://PRODUCTION_SERVER_URL/YOUR/API/URL"
+    "start:dev": "npm run clean && webpack-dev-server --hot --inline"
   },
   "jest": {
     "verbose": true,
@@ -47,12 +39,9 @@
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$"
   },
   "keywords": [],
-  "author": "",
+  "author": "CauseCode Technologies",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/causecode/PROJECT_REPOSITORY#readme",
   "dependencies": {
-    "axios": "^0.12.0",
-    "es6-promise": "3.2.1",
     "react": "15.1.0",
     "react-dom": "15.2.0",
     "react-router": "2.4.1",
@@ -62,8 +51,8 @@
     "html-webpack-plugin": "2.19.0",
     "redux": "3.6.0",
     "ts-loader": "1.2.2",
-    "tslint": "^3.11.0",
-    "tslint-loader": "^2.1.4",
+    "tslint": "3.11.0",
+    "tslint-loader": "2.1.4",
     "typescript": "2.1.1",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1"
